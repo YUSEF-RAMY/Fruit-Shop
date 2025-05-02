@@ -88,4 +88,10 @@ class ProductController extends Controller
             abort(403 , "product not found ,, please enter valid product id");
         }
     }
+
+//data table jquary
+    public function datatable(){
+        $products = Product::all();
+        return view('product.datatable' , ['products' => $products]);
+    }
 }
