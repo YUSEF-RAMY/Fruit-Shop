@@ -51,6 +51,6 @@ Route::get('/deleteproduct/{productid?}' ,[ProductController::class ,'removeProd
 // search bar on master bage 
 Route::match(['get', 'post'],'/search' ,[MainController::class , 'search']);
 
-//data table jquary
-Route::get('/datatable' , [ProductController::class , 'datatable']);
+//data table jquary dashboard
+Route::get('/datatable' , [ProductController::class , 'datatable'])->middleware('auth');
 

@@ -69,9 +69,11 @@
 								
 								{{-- <li><a href="/category">الاقسام</a></li> --}}
 								<li><a href="/products">المنتجات</a></li>
-								<li><a href="/addproduct">اضافه منتج</a></li>
+								{{-- <li><a href="/addproduct">اضافه منتج</a></li> --}}
 								<li><a href="/reviews"> راي العملاء</a></li>
+								@auth
 								<li><a href="/datatable"> داش بورد</a></li>
+								@endauth
 								{{-- <li><a href="/">الصفحات</a>
 									<ul class="sub-menu">
 										<li><a href="404.html">404 page</a></li>

@@ -69,7 +69,10 @@
 								
 								<li><a href="/category">الاقسام</a></li>
 								<li><a href="/products">المنتجات</a></li>
-								<li><a href="/addproduct">اضافه منتج</a></li>
+								{{-- <li><a href="/addproduct">اضافه منتج</a></li> --}}
+								@auth
+								<li><a href="/datatable"> داش بورد</a></li>
+								@endauth
 								<li><a href="/reviews"> راي العملاء</a></li>
 								{{-- <li><a href="/">الصفحات</a>
 									<ul class="sub-menu">
@@ -88,15 +91,15 @@
 										<li><a href="single-news.html">Single News</a></li>
 									</ul>
 								</li> --}}
-								<li><a href="contact.html">من نحن</a></li>
-								<li><a href="/">المتجر</a>
+								{{-- <li><a href="contact.html">من نحن</a></li> --}}
+								{{-- <li><a href="/">المتجر</a>
 									<ul class="sub-menu">
 										<li><a href="shop.html">Shop</a></li>
 										<li><a href="checkout.html">Check Out</a></li>
 										<li><a href="single-product.html">Single Product</a></li>
 										<li><a href="cart.html">Cart</a></li>
 									</ul>
-								</li>
+								</li> --}}
 								<li></li>
 
 

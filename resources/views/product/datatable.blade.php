@@ -5,6 +5,9 @@
 <script src="//cdn.datatables.net/2.3.0/js/dataTables.min.js"></script>
 
 @section('content')
+<div class="d-flex justify-content-center" style="margin:40px auto ; width: 100%; font-size: 10px;" dir="rtl">
+<li><a href="/addproduct" class="btn btn-success" style="font-size: 20px">اضافه منتج</a></li>
+</div>
     <div class="container mt-5 mb-5">
 <table id="myTable" class="display">
     <thead>
@@ -13,6 +16,7 @@
             <th>Name</th>
             <th>Price</th>
             <th>Quantity</th>
+            <th>photo</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -23,9 +27,10 @@
             <td>{{$item -> name}}</td>
             <td>{{$item -> price}}</td>
             <td>{{$item -> quantity}}</td>
-            <td>
-                <a href="{{url('/editproduct/' . $item -> id)}}" class="btn btn-primary">تعديل</a>
-                <a href="{{url('/deleteproduct/' . $item -> id)}}" class="btn btn-danger">حذف</a>
+            <td><img src=" {{$item -> imagepath}}" alt="صوره المنتج" height="100"></td>
+            <td class="d-flex" style="gap: 3px">
+                <a href="{{url('/editproduct/' . $item -> id)}}" class="btn btn-primary w-50" style="font-size:20px ">تعديل</a>
+                <a href="{{url('/deleteproduct/' . $item -> id)}}" class="btn btn-danger w-50" style="font-size: 20px">حذف</a>
             </td>
         </tr>
         @endforeach

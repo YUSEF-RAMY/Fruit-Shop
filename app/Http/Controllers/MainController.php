@@ -59,7 +59,7 @@ class MainController extends Controller
     public function GetCategoryByID ($cate_id = NULL) {
         $category = Category::all();
         if($cate_id){
-            $products = Product::where('category_id' , $cate_id)->paginate(3)->get();
+            $products = Product::where('category_id' , $cate_id)->paginate(3);
         }else{
             $products = Product::paginate(3);
         }
