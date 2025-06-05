@@ -10,5 +10,8 @@ class Product extends Model
     use HasFactory;
     protected $guarded = [] ;
 
+    public function cards()
+    {
+        return $this->hasMany(Card::class , 'product_id');
+    }
 }
-

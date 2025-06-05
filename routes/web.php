@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CardController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\HomeController;;
 use App\Http\Controllers\ProductController;
@@ -54,3 +55,8 @@ Route::match(['get', 'post'],'/search' ,[MainController::class , 'search']);
 //data table jquary dashboard
 Route::get('/datatable' , [ProductController::class , 'datatable'])->middleware('auth');
 
+// cart route
+Route::get('/cart' , [CardController::class , 'cart'])->middleware('auth');
+Route::get('/addproducttocart/{productid}' , [CardController::class , 'addproducttocart'])->middleware('auth');
+//delete item on cart
+Route::get('/delete/{id}' , [CardController::class , 'delete'])->middleware('auth');

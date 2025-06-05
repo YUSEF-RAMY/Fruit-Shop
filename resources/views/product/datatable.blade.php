@@ -8,6 +8,7 @@
 <div class="d-flex justify-content-center" style="margin:40px auto ; width: 100%; font-size: 10px;" dir="rtl">
 <li><a href="/addproduct" class="btn btn-success" style="font-size: 20px">اضافه منتج</a></li>
 </div>
+
     <div class="container mt-5 mb-5">
 <table id="myTable" class="display">
     <thead>
