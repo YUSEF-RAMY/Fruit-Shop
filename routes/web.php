@@ -60,3 +60,11 @@ Route::get('/cart' , [CardController::class , 'cart'])->middleware('auth');
 Route::get('/addproducttocart/{productid}' , [CardController::class , 'addproducttocart'])->middleware('auth');
 //delete item on cart
 Route::get('/delete/{id}' , [CardController::class , 'delete'])->middleware('auth');
+
+Route::get('/addproductimage/{productid}', [ProductController::class , 'addproductimage'])->middleware('auth');
+//delete image
+Route::get('/deleteproductimage/{productid}', [ProductController::class , 'deleteproductimage'])->middleware('auth');
+Route::post('/storeProductImage', [ProductController::class , 'storeProductImage'])->middleware('auth');
+
+//return a single product page
+Route::get('/singleproduct/{productid}' , [ProductController::class, 'singleproduct']);

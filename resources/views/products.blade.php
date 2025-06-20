@@ -28,7 +28,7 @@
                 <div id="" class="col-lg-4 col-md-6 text-center _{{ $item->category_id }}">
                     <div class="single-product-item">
                         <div class="product-image">
-                            <a href="صفحه العنصر نفسه"><img loading="lazy"
+                            <a href="/singleproduct/{{ $item ->id }}"><img loading="lazy"
                                     style="max-height: 250px !important; min-height: 250px !important;"
                                     src={{ asset($item->imagepath) }} alt="صور المنتجات"></a>
                         </div>

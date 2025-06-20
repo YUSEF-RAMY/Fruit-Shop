@@ -14,4 +14,14 @@ class Product extends Model
     {
         return $this->hasMany(Card::class , 'product_id');
     }
+
+    public function Category()
+    {
+        return $this->belongsTo(Category::class , 'category_id');
+    }
+
+    public function ProductPhoto()
+    {
+        return $this->hasMany(ProductPhoto::class);
+    }
 }
