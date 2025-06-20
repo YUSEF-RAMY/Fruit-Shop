@@ -9,8 +9,8 @@
 <li><a href="/addproduct" class="btn btn-success" style="font-size: 20px">اضافه منتج</a></li>
 </div>
 
-    <div class="container mt-5 mb-5">
-<table id="myTable" class="display">
+<div class="container mt-5 mb-5 ">
+<table id="myTable" class="display table table-hover" >
     <thead>
         <tr>
             <th>ID</th>
@@ -25,13 +25,14 @@
         @foreach($products as $item)
         <tr>
             <td>{{$item -> id}}</td>
-            <td>{{$item -> name}}</td>
+            <td><a href="/singleproduct/{{ $item ->id }}">{{$item -> name}}</a></td>
             <td>{{$item -> price}}</td>
             <td>{{$item -> quantity}}</td>
             <td><img src=" {{$item -> imagepath}}" alt="صوره المنتج" height="100"></td>
             <td class="d-flex" style="gap: 3px">
                 <a href="{{url('/editproduct/' . $item -> id)}}" class="btn btn-primary w-50" style="font-size:20px ">تعديل</a>
                 <a href="{{url('/deleteproduct/' . $item -> id)}}" class="btn btn-danger w-50" style="font-size: 20px">حذف</a>
+                <a href="{{url('/addproductimage/' . $item -> id)}}" class="btn btn-success" style="font-size: 20px">اضافه صور المنتج</a>
             </td>
         </tr>
         @endforeach

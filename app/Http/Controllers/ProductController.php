@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Log;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\ProductPhoto;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -93,5 +95,54 @@ class ProductController extends Controller
     public function datatable(){
         $products = Product::all();
         return view('product.datatable' , ['products' => $products]);
+    }
+
+// اضافه صور لنفس المنتج 
+    public function addproductimage($productimage_id)
+    {
+        $product = Product::findOrFail($productimage_id);
+        $productImage = ProductPhoto::where('product_id' , $productimage_id)->get();
+        return view('product.addproductimage' , ['product' => $product , 'productImage'=> $productImage]);
+    }
+
+    public function deleteproductimage($productid)
+    {
+        if($productid){
+            $productimage = ProductPhoto::findOrFail($productid);
+            $productimage->delete();  
+        }else{
+            // abort(403 , "product not found ,, please enter valid product id");
+            return redirect()->back()->with('error','لا يوجد صوره بهذا الاسم في قاعده البيانات');
+        }
+        return redirect()->back()->with('success','تم حذف الصوره بنجاح');
+    }
+
+    public function storeProductImage(Request $request){
+        $request->validate([
+            'product_id' => 'required',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif',
+        ]);
+        $photo = new ProductPhoto();
+        $photo -> product_id = $request-> product_id;
+        if($request->has('photo'))
+        {
+            $path = $request->photo ->move('uploads/products' , Str::uuid()->toString() . '-' . $request->photo->getClientOriginalName()); 
+        }else{
+            redirect()->back();
+        }
+        $photo->imagepath = $path;
+        $photo->save();
+        return redirect()->back();
+    }
+
+
+    public function singleproduct($productid)
+    {
+        $productinfo =Product::with('Category' , 'ProductPhoto')->find($productid);
+        $relatedProduct = Product::where('category_id' , $productinfo->category_id)->where('id' ,'!=', $productid)
+        ->inRandomOrder()
+        ->limit(3)
+        ->get();
+        return view('product.singleproduct',['product'=>$productinfo , 'relatedProduct'=>$relatedProduct]);
     }
 }
