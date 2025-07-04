@@ -1,11 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TestMail;
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\HomeController;;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Auth;
+
 
 
 
@@ -68,3 +71,14 @@ Route::post('/storeProductImage', [ProductController::class , 'storeProductImage
 
 //return a single product page
 Route::get('/singleproduct/{productid}' , [ProductController::class, 'singleproduct']);
+
+
+//cart checkout payment
+Route::get('/checkout' , [CardController::class, 'checkout'])->middleware('auth');
+
+Route::post('/storeOrder' , [CardController::class, 'storeOrder'])->middleware('auth');
+
+Route::get('test-mail' , function () {
+    Mail::to('yuseframy14@gmail.com')->send(new TestMail());
+    return '✅ Test mail sent successfully!';
+});

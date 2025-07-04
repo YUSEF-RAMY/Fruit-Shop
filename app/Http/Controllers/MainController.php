@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ClientReviewMail;
 use Illuminate\Support\Str;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Review;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -23,6 +25,7 @@ class MainController extends Controller
     }
 
     public function storeReviews(Request $request){
+        ini_set('max_execution_time' , 120);
         $request->validate([
             'name'=> 'required|string|max:100',
             'email'=> 'required|string|max:200',
@@ -31,6 +34,10 @@ class MainController extends Controller
             'massage'=> 'required|string|max:500',
             'photo'=> 'required|image|mimes:jpeg,png,jpg,gif',
         ]);
+
+        $data = $request->only(['name' , 'email' , 'phone' , 'subject' , 'massage']);
+        mail::to('yuseframy14@gmail.com')->send(new ClientReviewMail($data));
+
         $data = new Review();
         $data->name = $request->name;
         $data->email = $request->email;
