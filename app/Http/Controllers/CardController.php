@@ -57,7 +57,10 @@ class CardController extends Controller
             'info'    => 'nullable'
         ]);
         $user_id =auth()->user()->id;
-        $order =Order::create($request->only(['user_id' => $user_id, 'name' , 'email' , 'address' , 'phone' , 'info']));
+        $order =Order::create(array_merge(
+            ['user_id' => $user_id],
+            $request->only(['name' , 'email' , 'address' , 'phone' , 'info'])
+        ));
 
         $cardProducts = Card::with('product')->where('user_id' , $user_id)->get();
         foreach($cardProducts as $item)
