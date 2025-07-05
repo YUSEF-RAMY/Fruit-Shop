@@ -72,6 +72,9 @@ Route::post('/storeProductImage', [ProductController::class , 'storeProductImage
 //return a single product page
 Route::get('/singleproduct/{productid}' , [ProductController::class, 'singleproduct']);
 
+//order-details
+Route::get('/orderdetails' , [CardController::class, 'orderDetails']);
+
 
 //cart checkout payment
 Route::get('/checkout' , [CardController::class, 'checkout'])->middleware('auth');
