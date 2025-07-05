@@ -75,4 +75,12 @@ class CardController extends Controller
         Card::where('user_id' , $user_id)->delete();
         return redirect('/')->with('success' , 'Order send successfully!');
     }
+
+
+    public function orderDetails()
+    {
+        $user_id = auth()->user()->id;
+        $cartProducts = Order::with('orderdetales')->where('user_id' , $user_id )->get();
+        return view('product.orderdetails' , compact('cartProducts'));
+    }
 }

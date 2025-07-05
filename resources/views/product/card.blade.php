@@ -65,6 +65,7 @@
                         </table>
                         <div class="cart-buttons">
                             <a href="/checkout" class="boxed-btn black">Check Out</a>
+                            <a href="/orderdetails" class="boxed-btn black">Orders Details</a>
                         </div>
                     </div>
                 </div>
