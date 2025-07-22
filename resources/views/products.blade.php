@@ -28,7 +28,7 @@
                 <div id="" class="col-lg-4 col-md-6 text-center _{{ $item->category_id }}">
                     <div class="single-product-item">
                         <div class="product-image">
-                            <a href="/singleproduct/{{ $item ->id }}"><img loading="lazy"
+                            <a href="/singleproduct/{{ $item->id }}"><img loading="lazy"
                                     style="max-height: 250px !important; min-height: 250px !important;"
                                     src={{ asset($item->imagepath) }} alt="صور المنتجات"></a>
                         </div>
@@ -37,11 +37,16 @@
 
                         <a href="/addproducttocart/{{ $item->id }}" class="cart-btn"><i
                                 class="fas fa-shopping-cart"></i> اضافه الي السله</a>
-
-                        <a href="/deleteproduct/{{ $item->id }}" style="background-color:rgb(210, 51, 51); !important"
-                            class="cart-btn btn btn-danger"><i class="btn-danger"></i> حذف المنتج</a>
-                        <a href="/editproduct/{{ $item->id }}" style="background-color:rgb(42, 125, 185); !important"
-                            class="cart-btn btn btn-primary"><i class="btn-primary"></i> تعديل المنتج</a>
+                        @auth
+                            @if (auth()->user()->role == 'admin')
+                                <a href="/deleteproduct/{{ $item->id }}"
+                                    style="background-color:rgb(210, 51, 51); !important" class="cart-btn btn btn-danger"><i
+                                        class="btn-danger"></i> حذف المنتج</a>
+                                <a href="/editproduct/{{ $item->id }}"
+                                    style="background-color:rgb(42, 125, 185); !important" class="cart-btn btn btn-primary"><i
+                                        class="btn-primary"></i> تعديل المنتج</a>
+                            @endif
+                        @endauth
                     </div>
                 </div>
             @endforeach

@@ -72,7 +72,9 @@
 								{{-- <li><a href="/addproduct">اضافه منتج</a></li> --}}
 								<li><a href="/reviews"> راي العملاء</a></li>
 								@auth
+								@if(auth()->user()->role == 'admin')
 								<li><a href="/datatable"> داش بورد</a></li>
+								@endif
 								@endauth
 								{{-- <li><a href="/">الصفحات</a>
 									<ul class="sub-menu">
