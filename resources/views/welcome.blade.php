@@ -12,7 +12,7 @@
         <div class="col-lg-8 offset-lg-2 text-center">
             <div class="section-title">	
                 <h3><span class="orange-text">اقسام</span> الموقع</h3>
-                <h4>   الصفحه الرئيسيه </h4>
+                <h4>{{ __('words.main page') }}</h4>
             </div>
         </div>
     </div>

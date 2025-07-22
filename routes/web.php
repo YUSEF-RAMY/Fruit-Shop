@@ -7,6 +7,7 @@ use App\Http\Controllers\CardController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\HomeController;;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SetLangController;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -85,3 +86,6 @@ Route::get('test-mail' , function () {
     Mail::to('yuseframy14@gmail.com')->send(new TestMail());
     return '✅ Test mail sent successfully!';
 });
+
+// route for lang ar / en
+Route::get('lang/{locale}' , [SetLangController::class , 'changeLocalLand'])->name('setLang');
