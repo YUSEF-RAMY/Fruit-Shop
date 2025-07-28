@@ -26,7 +26,7 @@
                 <div class="product-image">
                     <a href="/products/{{$item -> id}}"><img loading="lazy" style="max-width: 250px !important; min-height: 200px !important;" src={{$item -> imagepath}} alt=""></a>
                 </div>
-                <h3>{{$item -> name}}</h3>
+                <h3>{{ $item -> name }}</h3>
                 <h3>{{$item -> description}}</h3>
             </div>
         </div>

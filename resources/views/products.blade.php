@@ -32,7 +32,7 @@
                                     style="max-height: 250px !important; min-height: 250px !important;"
                                     src={{ asset($item->imagepath) }} alt="صور المنتجات"></a>
                         </div>
-                        <h3>{{ $item->name }}</h3>
+                        <h3>{{ session('locale')== 'ar' ? $item->name : $item->nameEN }}</h3>
                         <p class="product-price"><span>{{ $item->quantity }}-الكميه</span> {{ $item->price }}$ </p>
 
                         <a href="/addproducttocart/{{ $item->id }}" class="cart-btn"><i
